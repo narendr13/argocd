@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: default-deploy2
+  labels:
+    name: default-deploy2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      ns: default2
+  template:
+    metadata:
+      labels:
+        ns: default2
+    spec:
+      containers:
+      - name: king
+        image: nginx
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "700Mi"
+          requests:
+            memory: "600Mi"
+            cpu: "300m"
+
